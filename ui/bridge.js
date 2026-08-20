@@ -226,6 +226,13 @@
   }
   function hidePill() { if (pill) pill.classList.remove("on"); }
 
+  // Release bodies carry install instructions below a "---" rule; the update
+  // card only wants the part above it — what actually changed.
+  function cleanNotes(text) {
+    if (!text) return "";
+    return String(text).split(/\n-{3,}[ \t]*\n/)[0].trim();
+  }
+
   var checkBtn = null, checkMsg = null;
   function setCheckState(text, busy) {
     if (checkMsg) checkMsg.textContent = text || "";
@@ -242,7 +249,7 @@
         if (p.manual) showPill("Checking for updates…", "", []);
       } else if (p.state === "available") {
         setCheckState("Version " + p.version + " available", false);
-        showPill("Prompt Deck " + p.version + " is available", p.notes || "", [
+        showPill("Prompt Deck " + p.version + " is available", cleanNotes(p.notes), [
           { label: "Later", onClick: hidePill },
           {
             label: "Install & restart", primary: true,

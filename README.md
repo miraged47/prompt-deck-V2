@@ -52,10 +52,10 @@ Aşağıdakilerin hepsi **tamamlandı** — tekrar yapman gerekmiyor:
 **Bundan sonra yeni sürüm yayınlamak için tek komut yeterli:**
 
 ```bash
-./scripts/release.sh 1.2.0
+./scripts/release.sh 1.2.0 "Ne değiştiğini bir cümleyle yaz"
 ```
 
-Sürüm numarasını güncelle, commit'le, etiketle ve push'la — hepsini bu komut yapar. GitHub Actions ~10 dakikada üç platformun kurulumlarını derleyip imzalar ve Releases sayfasında yayınlar. Kullanıcıların uygulamayı bir sonraki açışlarında güncelleme kartını görür.
+Sürüm numarasını güncelle, commit'le, etiketle ve push'la — hepsini bu komut yapar. İkinci argüman isteğe bağlıdır; yazarsan kullanıcıların güncelleme kartında **o metni** görür. GitHub Actions ~10 dakikada üç platformun kurulumlarını derleyip imzalar ve Releases sayfasında yayınlar. Kullanıcıların uygulamayı bir sonraki açışlarında güncelleme kartını görür.
 
 <details>
 <summary>Bu kurulum nasıl yapıldı? (referans — tekrar gerekmez)</summary>
@@ -102,7 +102,7 @@ GitHub'da depo → **Settings → Secrets and variables → Actions → New repo
 
 Bu komut sürüm numarasını iki dosyada günceller, commit'ler, `v1.1.0` etiketini oluşturur ve push'lar. GitHub Actions devreye girer, macOS (Intel + Apple Silicon tek pakette) ve Windows kurulumlarını derler, imzalar ve Releases sayfasında yayınlar. Yaklaşık 10–15 dakika sürer.
 
-Sonraki her sürüm için tek komut: `./scripts/release.sh 1.2.0`
+Sonraki her sürüm için tek komut: `./scripts/release.sh 1.2.0 "Ne değişti"`
 
 </details>
 

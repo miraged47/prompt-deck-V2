@@ -2,14 +2,19 @@
 # Cut a new release: bump the version everywhere, tag it, push it.
 # GitHub Actions then builds and publishes the installers.
 #   ./scripts/release.sh 1.2.0
+#   ./scripts/release.sh 1.2.0 "Yeni logo ve hata düzeltmeleri"
+#
+# The second argument becomes the release notes — the text users see on the
+# update card inside the app. Leave it out and the version alone is shown.
 set -euo pipefail
 
-if [ $# -ne 1 ]; then
-  echo "usage: $0 <version>   e.g. $0 1.2.0" >&2
+if [ $# -lt 1 ] || [ $# -gt 2 ]; then
+  echo "usage: $0 <version> [release notes]   e.g. $0 1.2.0 \"Yeni logo\"" >&2
   exit 1
 fi
 
 VERSION="$1"
+NOTES="${2:-Prompt Deck $1}"
 if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   echo "version must look like 1.2.0" >&2
   exit 1
@@ -50,7 +55,7 @@ if git diff --cached --quiet; then
 else
   git commit -m "Release v$VERSION"
 fi
-git tag "v$VERSION"
+git tag -a "v$VERSION" -m "$NOTES"
 git push origin HEAD
 git push origin "v$VERSION"
 

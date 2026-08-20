@@ -58,6 +58,25 @@ jobs:
         with:
           workspaces: "./src-tauri -> target"
 
+      - name: Compose release notes
+        id: notes
+        shell: bash
+        run: |
+          git fetch --tags --force --quiet || true
+          NOTES="$(git for-each-ref "refs/tags/${GITHUB_REF_NAME}" --format='%(contents)')"
+          if [ -z "$(printf '%s' "$NOTES" | tr -d '[:space:]')" ]; then
+            NOTES="Prompt Deck ${GITHUB_REF_NAME#v}"
+          fi
+          {
+            echo 'body<<PD_NOTES_EOF'
+            printf '%s\n' "$NOTES"
+            echo
+            echo '---'
+            echo
+            cat .github/install-notes.md
+            echo 'PD_NOTES_EOF'
+          } >> "$GITHUB_OUTPUT"
+
       - name: Build, sign and publish
         uses: tauri-apps/tauri-action@v0
         env:
@@ -67,18 +86,7 @@ jobs:
         with:
           tagName: ${{ github.ref_name }}
           releaseName: "Prompt Deck __VERSION__"
-          releaseBody: |
-            ### Install
-
-            **macOS** — download the `.dmg`, drag Prompt Deck to Applications.
-            The build is not notarised by Apple, so the first launch needs
-            **right-click → Open** (or: `xattr -dr com.apple.quarantine "/Applications/Prompt Deck.app"`).
-
-            **Windows** — download the `-setup.exe`. SmartScreen may warn about an
-            unknown publisher: *More info → Run anyway*.
-
-            Later versions install themselves — the app checks this release page
-            on launch and offers the update in-app.
+          releaseBody: ${{ steps.notes.outputs.body }}
           releaseDraft: false
           prerelease: false
           includeUpdaterJson: true
