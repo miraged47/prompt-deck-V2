@@ -1,0 +1,27 @@
+Prompt Deck
+Copyright (c) 2026 Mirac Cavdur. All rights reserved.
+
+This software and its keyword library are proprietary.
+
+You may download and use the released application for personal use.
+You may NOT copy, redistribute, publish, sublicense, sell, or create
+derivative works from this software or its keyword library, and you may
+not reverse engineer it, without prior written permission from the
+copyright holder.
+
+The source is published here so that friends and collaborators can build
+and audit the application they run. Publishing the source does not place
+it in the public domain and does not grant any license beyond the above.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.
+
+---
+
+Bundled third-party assets:
+
+  Inter, Archivo, JetBrains Mono (ui/fonts/) — SIL Open Font License 1.1
+  https://openfontlicense.org

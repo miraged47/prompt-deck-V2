@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Prompt Deck",
+  "version": "1.1.0",
+  "identifier": "com.miraccavdur.promptdeck",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Prompt Deck",
+        "width": 1440,
+        "height": 940,
+        "minWidth": 880,
+        "minHeight": 620,
+        "center": true,
+        "resizable": true,
+        "fullscreen": false,
+        "dragDropEnabled": false,
+        "visible": false,
+        "backgroundColor": "#f4f6f9"
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "createUpdaterArtifacts": true,
+    "targets": [
+      "app",
+      "dmg",
+      "nsis",
+      "appimage",
+      "deb"
+    ],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "copyright": "Copyright (c) 2026 Mirac Cavdur. All rights reserved.",
+    "category": "Graphics and Design",
+    "shortDescription": "Cinematic AI prompt keyword console",
+    "longDescription": "Prompt Deck builds cinematic Nano Banana Pro image prompts from a curated keyword library — looks, presets, prompt archive and an optional AI assistant.",
+    "macOS": {
+      "minimumSystemVersion": "10.15"
+    },
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": [
+          "English",
+          "Turkish"
+        ]
+      }
+    },
+    "linux": {
+      "deb": {
+        "depends": [
+          "libwebkit2gtk-4.1-0",
+          "libgtk-3-0"
+        ]
+      }
+    }
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://github.com/miraged47/prompt-deck/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDOUZGMzYzRUJGQzI1NTgKUldSWUpmenJZL09mM010NkRHa2Q3ZVBaeGJCbHhCUDJudFBhVlB1amtlc2dYdlBFcUdHOW9jUTUK",
+      "windows": {
+        "installMode": "passive"
+      }
+    }
+  }
+}

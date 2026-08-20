@@ -1,0 +1,12 @@
+{
+  "name": "Prompt Deck",
+  "short_name": "Prompt Deck",
+  "description": "Cinematic AI prompt keyword console",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4f6f9",
+  "theme_color": "#4a6fa5",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "256x256", "type": "image/png", "purpose": "any" }
+  ]
+}

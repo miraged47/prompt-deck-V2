@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#23303f"/>
+      <stop offset="0.55" stop-color="#16202b"/>
+      <stop offset="1" stop-color="#0e141b"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="chipTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8f3fc"/>
+      <stop offset="1" stop-color="#b3d4ee"/>
+    </linearGradient>
+    <linearGradient id="chipMid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5b86c4"/>
+      <stop offset="1" stop-color="#3f6fb5"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="228" ry="228" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1024" height="1024" rx="228" ry="228" fill="url(#sheen)"/>
+  <rect x="6" y="6" width="1012" height="1012" rx="224" ry="224" fill="none" stroke="#6f9cd1" stroke-opacity="0.28" stroke-width="12"/>
+
+  <!-- stacked keyword chips -->
+  <g>
+    <rect x="286" y="626" width="452" height="104" rx="52" fill="#3f5670" opacity="0.62"/>
+    <rect x="238" y="466" width="548" height="118" rx="59" fill="url(#chipMid)"/>
+    <circle cx="316" cy="525" r="26" fill="#0e141b" opacity="0.34"/>
+    <rect x="374" y="509" width="330" height="32" rx="16" fill="#dcebfa" opacity="0.72"/>
+    <rect x="196" y="292" width="632" height="132" rx="66" fill="url(#chipTop)"/>
+    <circle cx="284" cy="358" r="30" fill="#2a7aaa"/>
+    <rect x="348" y="341" width="382" height="34" rx="17" fill="#2e4a66" opacity="0.62"/>
+  </g>
+
+  <!-- amber accent: the AI spark -->
+  <g transform="translate(742,214)">
+    <path d="M0 -66 L18 -18 L66 0 L18 18 L0 66 L-18 18 L-66 0 L-18 -18 Z" fill="#f3b74e"/>
+  </g>
+</svg>

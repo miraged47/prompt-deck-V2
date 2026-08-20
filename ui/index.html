@@ -18,9 +18,11 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prompt Deck — NB Pro keyword console</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Archivo:wght@600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- Fonts are bundled locally (ui/fonts) so the desktop app renders identically offline. -->
+<link rel="stylesheet" href="fonts.css">
+<!-- Desktop bridge: native save dialogs, CORS-free AI calls, auto-update UI.
+     Harmless no-op when this file is opened in a normal browser. -->
+<script src="bridge.js" defer></script>
 <style>
   :root{
     --bg:#f4f6f9; --bg2:#e4edf7; --panel:#ffffff; --panel2:#dce8f5; --panel3:#c8ddf0;

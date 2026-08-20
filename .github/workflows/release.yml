@@ -1,0 +1,85 @@
+name: Release
+
+# Push a version tag (v1.2.0) and this builds installers for macOS + Windows
+# (+ Linux, best effort), signs the update bundles and publishes a GitHub
+# Release containing `latest.json` — which is what the in-app updater reads.
+#
+# Required repository secrets:
+#   TAURI_SIGNING_PRIVATE_KEY           contents of ~/.tauri/prompt-deck.key
+#   TAURI_SIGNING_PRIVATE_KEY_PASSWORD  the key's password ("" if you made it without one)
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: macos-latest
+            args: "--target universal-apple-darwin"
+            rust-targets: "aarch64-apple-darwin,x86_64-apple-darwin"
+            optional: false
+          - platform: windows-latest
+            args: ""
+            rust-targets: ""
+            optional: false
+          - platform: ubuntu-22.04
+            args: ""
+            rust-targets: ""
+            optional: true
+
+    runs-on: ${{ matrix.platform }}
+    continue-on-error: ${{ matrix.optional }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Linux build dependencies
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev \
+            librsvg2-dev patchelf libgtk-3-dev build-essential curl wget file
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust-targets }}
+
+      - name: Cache Rust build
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+
+      - name: Build, sign and publish
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: "Prompt Deck __VERSION__"
+          releaseBody: |
+            ### Install
+
+            **macOS** — download the `.dmg`, drag Prompt Deck to Applications.
+            The build is not notarised by Apple, so the first launch needs
+            **right-click → Open** (or: `xattr -dr com.apple.quarantine "/Applications/Prompt Deck.app"`).
+
+            **Windows** — download the `-setup.exe`. SmartScreen may warn about an
+            unknown publisher: *More info → Run anyway*.
+
+            Later versions install themselves — the app checks this release page
+            on launch and offers the update in-app.
+          releaseDraft: false
+          prerelease: false
+          includeUpdaterJson: true
+          args: ${{ matrix.args }}
