@@ -78,13 +78,20 @@ pub async fn run_check(app: AppHandle, manual: bool) {
 
 fn friendly_error(e: &tauri_plugin_updater::Error) -> String {
     let raw = e.to_string();
-    if raw.contains("404") || raw.to_lowercase().contains("not found") {
-        "No published release found yet.".into()
-    } else if raw.to_lowercase().contains("dns")
-        || raw.to_lowercase().contains("connect")
-        || raw.to_lowercase().contains("timed out")
+    let low = raw.to_lowercase();
+    if low.contains("404") || low.contains("not found") || low.contains("release json") {
+        // Also the "no releases published yet" case — the endpoint simply 404s.
+        "No release published yet.".into()
+    } else if low.contains("dns")
+        || low.contains("connect")
+        || low.contains("timed out")
+        || low.contains("timeout")
+        || low.contains("offline")
+        || low.contains("network")
     {
         "No internet connection.".into()
+    } else if low.contains("signature") {
+        "The downloaded update failed its signature check — it was not installed.".into()
     } else {
         raw
     }
