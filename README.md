@@ -40,9 +40,27 @@ Elle kontrol: macOS'ta menüden **Prompt Deck → Check for Updates…**, her pl
 
 ---
 
-## İlk kurulum (senin için, bir kereliğine)
+## Kurulum durumu
 
-### 1. Depoyu GitHub'a yükle
+Aşağıdakilerin hepsi **tamamlandı** — tekrar yapman gerekmiyor:
+
+- [x] Depo oluşturuldu ve kod yüklendi: `github.com/miraged47/prompt-deck-V2` (public)
+- [x] İmza anahtarı GitHub Secrets'a eklendi (`TAURI_SIGNING_PRIVATE_KEY`)
+- [x] İlk sürüm yayınlandı: **v1.1.0** — macOS, Windows ve Linux kurulumlarıyla
+- [x] Bilgisayarında `gh` (GitHub CLI) kuruldu ve git kimliğin ayarlandı
+
+**Bundan sonra yeni sürüm yayınlamak için tek komut yeterli:**
+
+```bash
+./scripts/release.sh 1.2.0
+```
+
+Sürüm numarasını güncelle, commit'le, etiketle ve push'la — hepsini bu komut yapar. GitHub Actions ~10 dakikada üç platformun kurulumlarını derleyip imzalar ve Releases sayfasında yayınlar. Kullanıcıların uygulamayı bir sonraki açışlarında güncelleme kartını görür.
+
+<details>
+<summary>Bu kurulum nasıl yapıldı? (referans — tekrar gerekmez)</summary>
+
+### 1. Depo
 
 ```bash
 git remote add origin https://github.com/miraged47/prompt-deck-V2.git
@@ -85,6 +103,8 @@ GitHub'da depo → **Settings → Secrets and variables → Actions → New repo
 Bu komut sürüm numarasını iki dosyada günceller, commit'ler, `v1.1.0` etiketini oluşturur ve push'lar. GitHub Actions devreye girer, macOS (Intel + Apple Silicon tek pakette) ve Windows kurulumlarını derler, imzalar ve Releases sayfasında yayınlar. Yaklaşık 10–15 dakika sürer.
 
 Sonraki her sürüm için tek komut: `./scripts/release.sh 1.2.0`
+
+</details>
 
 ---
 
