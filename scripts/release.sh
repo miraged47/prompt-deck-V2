@@ -45,7 +45,11 @@ PY
 (cd src-tauri && cargo metadata --format-version 1 >/dev/null 2>&1 || true)
 
 git add -A
-git commit -m "Release v$VERSION"
+if git diff --cached --quiet; then
+  echo "version files already at $VERSION — tagging the current commit"
+else
+  git commit -m "Release v$VERSION"
+fi
 git tag "v$VERSION"
 git push origin HEAD
 git push origin "v$VERSION"

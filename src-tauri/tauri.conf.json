@@ -73,7 +73,7 @@
   "plugins": {
     "updater": {
       "endpoints": [
-        "https://github.com/miraged47/prompt-deck/releases/latest/download/latest.json"
+        "https://github.com/miraged47/prompt-deck-V2/releases/latest/download/latest.json"
       ],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IERDOUZGMzYzRUJGQzI1NTgKUldSWUpmenJZL09mM010NkRHa2Q3ZVBaeGJCbHhCUDJudFBhVlB1amtlc2dYdlBFcUdHOW9jUTUK",
       "windows": {

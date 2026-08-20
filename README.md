@@ -8,7 +8,7 @@ Rust + [Tauri 2](https://tauri.app) ile paketlendi. Arayüz, orijinal Prompt Dec
 
 ## Arkadaşların için: kurulum
 
-Uygulamayı [**Releases**](https://github.com/miraged47/prompt-deck/releases/latest) sayfasından indirirler.
+Uygulamayı [**Releases**](https://github.com/miraged47/prompt-deck-V2/releases/latest) sayfasından indirirler.
 
 **macOS** — `.dmg` dosyasını indir, Prompt Deck'i Applications klasörüne sürükle.
 Uygulama Apple tarafından imzalanmadığı için ilk açılışta macOS uyarı verir:
@@ -45,7 +45,7 @@ Elle kontrol: macOS'ta menüden **Prompt Deck → Check for Updates…**, her pl
 ### 1. Depoyu GitHub'a yükle
 
 ```bash
-git remote add origin https://github.com/miraged47/prompt-deck.git
+git remote add origin https://github.com/miraged47/prompt-deck-V2.git
 git branch -M main
 git push -u origin main
 ```
