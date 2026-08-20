@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- Prompt Deck wordmark icon — full-bleed variant for Windows and Linux,
+       where taskbar icons are expected to fill their canvas.
+       macOS uses app-icon.svg, which follows Apple's inset icon grid. -->
+  <defs>
+    <clipPath id="squircle">
+      <rect x="0" y="0" width="1024" height="1024" rx="185" ry="185"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#squircle)">
+    <rect x="0" y="0" width="1024" height="1024" fill="#eef2f9"/>
+    <g font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="678">
+      <text x="73" y="742" fill="#2e3135">P</text>
+      <text x="503" y="742" fill="#5a7b8c">D</text>
+    </g>
+  </g>
+</svg>

@@ -139,12 +139,13 @@ src-tauri/
   src/lib.rs            Pencere, menü, AI vekili, dosya kaydetme
   src/updater.rs        Güncelleme kontrolü, indirme, imza doğrulama, kurulum
   tauri.conf.json       Uygulama kimliği, pencere ayarları, güncelleme adresi ve açık anahtar
-  icons/                Uygulama ikonları (app-icon.svg'den üretildi)
+  icons/                Uygulama ikonları (scripts/make-icons.sh ile üretilir)
 .github/workflows/
   release.yml           Etiket push'landığında derleyip yayınlayan otomasyon
 scripts/
   release.sh            Yeni sürüm yayınla
   set-repo.sh           Güncelleme adresini değiştir
+  make-icons.sh         İkonları yeniden üret (app-icon*.svg dosyalarından)
 ```
 
 ---

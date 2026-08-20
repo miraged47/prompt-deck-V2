@@ -1,14 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
-  <!-- Prompt Deck wordmark icon: the app's own PD logo.
-       Corners are rounded so the icon sits correctly in the macOS Dock. -->
+  <!-- Prompt Deck wordmark icon — macOS variant.
+       Follows Apple's icon grid: the 1024 canvas holds an 824x824 body with a
+       185.4 corner radius, leaving 100px of transparent padding on every side.
+       Without that padding the icon renders larger than every neighbour in the Dock.
+       Windows/Linux use app-icon-square.svg (full bleed). -->
   <defs>
     <clipPath id="squircle">
-      <rect x="0" y="0" width="1024" height="1024" rx="185" ry="185"/>
+      <rect x="100" y="100" width="824" height="824" rx="185.4" ry="185.4"/>
     </clipPath>
   </defs>
   <g clip-path="url(#squircle)">
-    <rect x="0" y="0" width="1024" height="1024" fill="#eef2f9"/>
-    <g font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="678">
+    <rect x="100" y="100" width="824" height="824" fill="#eef2f9"/>
+    <!-- Letters were laid out for a 1024 body; scale them into the 824 one. -->
+    <g transform="translate(100,100) scale(0.8046875)"
+       font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="678">
       <text x="73" y="742" fill="#2e3135">P</text>
       <text x="503" y="742" fill="#5a7b8c">D</text>
     </g>
