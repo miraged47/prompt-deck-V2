@@ -1,6 +1,6 @@
 [package]
 name = "prompt-deck"
-version = "1.1.0"
+version = "1.1.1"
 description = "Prompt Deck — cinematic AI prompt keyword console"
 authors = ["Mirac Cavdur"]
 edition = "2021"
